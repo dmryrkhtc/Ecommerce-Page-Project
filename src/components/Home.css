@@ -1,0 +1,125 @@
+.home-container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-section {
+  background-image: url("../pictures/arkpln.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px; /* Navbar yüksekliğini göz önünde bulundurarak padding */
+  box-sizing: border-box;
+  height: 50vh; /* Ekranın yarısını kaplayacak şekilde yüksekliği ayarla */
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 2.5em; /* Başlık boyutu */
+  margin: 0;
+  color: #000; /* Başlığın rengini siyah yapar */
+  font-weight: bold; /* Başlığı kalın yapar */
+}
+
+.cta-button {
+  background-color: #757575; /* Butonun arka plan rengi */
+  color: #fff; /* Buton yazı rengi */
+  padding: 10px 20px; /* Butonun iç padding'i */
+  text-decoration: none;
+  border-radius: 6px; /* Butonun köşelerini yuvarlar */
+  font-size: 16px; /* Buton yazı boyutu */
+  display: inline-block;
+  margin-top: 15px; /* Buton üst boşluğu */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Buton renk ve transform geçiş efektleri */
+}
+
+.cta-button:hover {
+  background-color: #cccccc; /* Buton üzerine gelindiğinde arka plan renginin değişmesi */
+  transform: scale(1.03); /* Butonun üzerine gelindiğinde daha az büyümesi */
+}
+
+/* Featured Section */
+.featured-section {
+  padding: 40px 20px;
+  background-image: url("../pictures/arkpln2.jpg"); /* Arka plan görseli */
+  background-size: cover; /* Görselin kapsama şekli */
+  background-position: center; /* Görselin ortalanması */
+  background-repeat: no-repeat; /* Görselin tekrar etmesini önler */
+  color: #fff; /* Yazı rengi */
+  height: 50vh; /* Ekranın yarısını kaplayacak şekilde yüksekliği ayarla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-section h2 {
+  font-size: 2em; /* Başlık boyutu */
+  color: #000000; /* Başlık rengi */
+  margin-bottom: 20px; /* Başlık ve grid arasındaki boşluk */
+  text-align: center; /* Başlığı ortala */
+}
+
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grid düzeni */
+  gap: 20px; /* Kartlar arasındaki boşluk */
+}
+
+.artwork-card {
+  position: relative;
+  background-color: #ffffff; /* Kartın arka plan rengi */
+  border: 1px solid #ddd; /* Kartın sınırı */
+  border-radius: 8px; /* Köşe yuvarlama */
+  overflow: hidden; /* İçeriğin taşmasını önler */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Yumuşak geçiş */
+  height: 300px; /* Kart yüksekliği ayarla */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex; /* İçeriği alt kısma hizalar */
+}
+
+.artwork-card:hover {
+  transform: scale(1.03); /* Üzerine gelindiğinde büyüme */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Üzerine gelindiğinde gölge efekti */
+}
+
+.artwork-card .artwork-image {
+  width: 100%;
+  height: 200px; /* Sabit yükseklik */
+  object-fit: cover; /* Resmi kapsama */
+  background-size: cover; /* Arka planın kapsama şekli */
+  background-position: center; /* Arka planın ortalanması */
+}
+
+.artwork-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #c8c8c8;
+  border-top: 1px solid #444; /* Üst sınır */
+  border-radius: 0 0 8px 8px; /* Alt köşelerin yuvarlatılması */
+  text-align: center; /* İçeriği ortala */
+}
+
+.artwork-details h3 {
+  margin: 0 0 10px; /* Başlık altındaki boşluk */
+  font-size: 1.2em; /* Başlık boyutu */
+}
+
+.artwork-details p {
+  margin: 0; /* Paragraf üst ve alt boşlukları kaldır */
+  font-size: 0.9em; /* Metin boyutu */
+  color: #333; /* Daha koyu renk */
+}
