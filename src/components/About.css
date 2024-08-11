@@ -1,0 +1,47 @@
+.about-container {
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+  background-color: hidden; /* Arka plan rengi */
+  color: #333; /* Yazı rengi */
+}
+
+.about-header {
+  text-align: center; /* Başlık ve açıklamayı ortala */
+  padding-bottom: 30px; /* Alt padding */
+  border-bottom: 2px solid #ddd; /* Alt sınır */
+  margin-bottom: 30px; /* Alt boşluk */
+}
+
+.about-header h1 {
+  margin: 0;
+  font-size: 2.8em; /* Başlık boyutu */
+  color: #222; /* Başlık rengi daha koyu */
+}
+
+.about-header p {
+  margin-top: 10px;
+  font-size: 1.3em; /* Açıklama boyutu */
+  color: #555; /* Açıklama rengi daha koyu */
+}
+
+.about-content {
+  text-align: center;
+  max-width: 900px; /* Daha geniş içerik alanı */
+  margin: 0 auto; /* Ortala */
+  padding: 30px; /* İç padding */
+  background-color: hidden; /* İçerik alanı arka plan rengi */
+  border-radius: 8px; /* Köşe yuvarlama */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+.about-content h2 {
+  font-size: 2.2em; /* Alt başlık boyutu */
+  margin-top: 20px; /* Üst boşluk */
+  color: #222; /* Alt başlık rengi */
+}
+
+.about-content p {
+  font-size: 1.1em; /* Metin boyutu */
+  line-height: 1.8; /* Satır yüksekliği */
+  color: #333; /* Metin rengi */
+}
