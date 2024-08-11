@@ -11,8 +11,8 @@ import Works from "./components/Works";
 import ProductDetailPage from "./components/ProductDetailPage";
 import ProductListPage from "./components/ProductListPage";
 import Login from "./login/Login";
-import Register from "./login/Register"; // Kayıt sayfası ekleyin
-import ForgotPassword from "./login/ForgotPassword"; // Şifre sıfırlama sayfası ekleyin
+import Register from "./login/Register";
+import ForgotPassword from "./login/ForgotPassword";
 
 function App() {
   return (
