@@ -1,0 +1,153 @@
+.navbar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(26, 26, 26, 0.407);
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input {
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search-button {
+  background-color: rgba(26, 26, 26, 0.407);
+  border: none;
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+  background-image: url("../pictures/search_icon.webp");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+}
+
+.navbar-center {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-right: 100px; /* Orta kısım sola kaydırılır */
+}
+
+.navbar-center li {
+  margin: 0 20px; /* Aralıkları genişletmek için */
+  position: relative;
+}
+
+.navbar-center a {
+  color: #dcdcdc; /* Daha açık gri renk */
+  text-decoration: none;
+  font-size: 16px; /* Yazı boyutu */
+  transition: color 0.3s, font-weight 0.3s; /* Geçiş efekti */
+}
+
+.navbar-center a:hover {
+  color: #ffffff; /* Üzerine gelindiğinde beyaz renk */
+  font-weight: bold; /* Üzerine gelindiğinde kalın yazı */
+}
+
+.navbar-center a.active {
+  color: #f0f0f0; /* Aktif bağlantı rengi */
+  font-weight: bold; /* Aktif bağlantı kalın yazı */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.navbar-right a {
+  color: #dcdcdc; /* Daha açık gri renk */
+  text-decoration: none;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* Yazı boyutu */
+  transition: color 0.3s, font-weight 0.3s; /* Geçiş efekti */
+}
+
+.navbar-right a:hover {
+  color: #ffffff; /* Üzerine gelindiğinde beyaz renk */
+  font-weight: bold; /* Üzerine gelindiğinde kalın yazı */
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #dcdcdc; /* Daha açık gri renk */
+  margin-right: 10px;
+}
+
+.cart-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px; /* İkonun yazının sağında görünmesini sağlamak için margin-left eklendi */
+}
+
+.cart-icon {
+  width: 70px; /* İkon boyutunu küçültmek */
+  height: 70px; /* İkon boyutunu küçültmek */
+  background-image: url("../pictures/card_icon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 8px; /* İkon ile yazı arasına biraz boşluk eklemek */
+}
+
+.cart-link .cart-icon {
+  order: 2; /* İkonun sağda görünmesini sağlamak için order */
+}
+
+.cart-link span {
+  order: 1; /* Yazının solda görünmesini sağlamak için order */
+}
+
+.artworks-display {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.artworks-display ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.artworks-display li {
+  margin: 10px 0;
+}
+
+.artworks-display img {
+  width: 100px;
+  height: auto;
+  margin-left: 10px;
+  vertical-align: middle;
+}
