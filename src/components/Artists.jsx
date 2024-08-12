@@ -3,11 +3,13 @@ import "./Artists.css";
 import mockData from "../mockData";
 
 const Artists = () => {
+  //mockdatadan sanatci ismi alip dizi olusturduk
   const artistNames = Array.from(new Set(mockData.map((item) => item.artist)));
-
+  //her sanatci icin sanatci verisi olusturduk
   const artistData = artistNames.map((artist) => {
+    //sanatcinin eserlerinini filtreledik
     const artworks = mockData.filter((item) => item.artist === artist);
-
+    //ilk eserinden resim aldik
     const artistImage = artworks.length > 0 ? artworks[0].image : null;
 
     return { name: artist, artworks, image: artistImage };

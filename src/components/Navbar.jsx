@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
+  //arama butonu icin ama simdilik calismiyor
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -16,9 +17,11 @@ const Navbar = () => {
       setSearchQuery("");
     }
   };
-
+  //arama butonuna tıkladığımızda
   const handleSearchClick = () => {
+    //bos degilse
     if (searchQuery.trim() !== "") {
+      //product-liste yoneliyorsun
       navigate(`/product-list?search=${searchQuery}`);
       setSearchQuery("");
     }
