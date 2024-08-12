@@ -1,0 +1,80 @@
+.contact-container {
+  font-family: Arial, sans-serif;
+  padding: 40px 20px; /* Daha fazla padding */
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: hidden; /* Arka plan rengi */
+  border-radius: 8px; /* Köşeleri yuvarlat */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2em; /* Başlık boyutu */
+  color: #333; /* Başlık rengi */
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Grup elemanlar arası boşluk */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555; /* Label rengi */
+}
+
+input,
+textarea {
+  padding: 12px; /* İç padding */
+  border: 1px solid #ddd; /* Sınır rengi */
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s ease; /* Sınır renginin yumuşak geçişi */
+}
+
+input:focus,
+textarea:focus {
+  border-color: #8b817e; /* Odaklanıldığında sınır rengi */
+  outline: none; /* Varsayılan outline'ı kaldır */
+}
+
+textarea {
+  resize: vertical;
+  min-height: 150px; /* Minimum yükseklik */
+}
+
+.submit-button {
+  background-color: #bbbbbb;
+  color: #fff;
+  padding: 12px 20px; /* İç padding */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Renk ve boyut değişikliği için yumuşak geçişler */
+}
+
+.submit-button:hover {
+  background-color: #d8d8d8; /* Hover'da arka plan rengi */
+  transform: translateY(-2px); /* Hover'da hafif yukarı kayma */
+}
+
+.contact-info {
+  margin-top: 40px; /* Üst boşluk */
+  text-align: center;
+  color: #0f0f0f; /* Yazı rengi */
+}
+
+.contact-info p {
+  margin: 10px 0;
+  line-height: 1.6; /* Satır yüksekliği */
+}

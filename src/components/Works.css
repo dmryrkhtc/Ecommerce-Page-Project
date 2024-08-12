@@ -1,0 +1,33 @@
+.works-container {
+  padding: 20px;
+  background-color: hidden; /* Arka plan rengi */
+}
+
+.works-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Kartları ortalar */
+}
+
+.work-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px; /* İç boşluğu artırdım */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Daha belirgin gölge */
+  transition: transform 0.3s, box-shadow 0.3s; /* Geçiş efektleri */
+}
+
+.work-card:hover {
+  transform: translateY(-5px); /* Hover'da hafif yukarı kaydırma */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Hover'da gölgeyi artır */
+}
+
+.work-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,63 @@
+.artists-container {
+  font-family: Arial, sans-serif;
+  padding: 40px 20px; /* Daha fazla padding */
+  background-color: hidden; /* Arka plan rengi */
+  color: #333; /* Yazı rengi */
+}
+
+.artists-container h1 {
+  text-align: center; /* Başlık ortalanmış */
+  font-size: 2.5em; /* Başlık boyutu */
+  margin-bottom: 30px; /* Başlık ve grid arasındaki boşluk */
+  color: #222; /* Başlık rengi daha koyu */
+}
+
+.artists-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Kartlar arasındaki boşluk */
+  justify-content: center; /* Ortalanmış kartlar */
+}
+
+.artist-card {
+  background-color: #fff; /* Kart arka plan rengi */
+  border-radius: 8px; /* Köşe yuvarlama */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+  padding: 20px; /* İç padding */
+  text-align: center; /* İçerik ortalanmış */
+  max-width: 300px; /* Maksimum genişlik */
+  border: 1px solid #ddd; /* Sınır rengi */
+}
+
+.artist-image {
+  width: 120px; /* Sabit genişlik */
+  height: 120px; /* Sabit yükseklik */
+  object-fit: cover; /* Görselin kapsama şekli */
+  border-radius: 50%; /* Yuvarlak görünüm */
+  margin-bottom: 15px; /* Alt boşluk */
+  border: 2px solid #ddd; /* Görselin etrafında sınır */
+}
+
+.artworks-list {
+  margin-top: 20px; /* Üst boşluk */
+  text-align: center; /* İçerik ortalanmış */
+}
+
+.artwork-item {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* İçerik ortalanmış */
+  margin-bottom: 10px; /* Kartlar arası boşluk */
+}
+
+.artwork-thumb {
+  width: 60px; /* Sabit genişlik */
+  height: 60px; /* Sabit yükseklik */
+  margin-right: 10px; /* Sağ boşluk */
+  border-radius: 4px; /* Köşe yuvarlama */
+}
+
+.artwork-item p {
+  margin: 0; /* Alt ve üst boşlukları kaldır */
+  color: #555; /* Metin rengi */
+}

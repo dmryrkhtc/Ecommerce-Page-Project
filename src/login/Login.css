@@ -1,0 +1,79 @@
+.login-page {
+  width: 100%;
+  max-width: 400px; /* Maksimum genişlik */
+  margin: 40px auto; /* Üst ve alt boşluk ekleme */
+  padding: 40px 20px; /* Daha fazla iç padding */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+  background-color: hidden; /* Beyaz arka plan rengi */
+}
+
+.login-page h1 {
+  text-align: center;
+  margin-bottom: 30px; /* Başlık ve form arasındaki boşluk */
+  font-size: 2em; /* Başlık boyutu */
+  color: #333; /* Başlık rengi */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Daha fazla boşluk */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px; /* Etiket ve input arasındaki boşluk */
+  font-weight: bold; /* Koyu etiket rengi */
+  color: #555; /* Etiket rengi */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px; /* Daha fazla iç padding */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px; /* Yazı boyutu */
+  transition: border-color 0.3s ease; /* Sınır renginin geçiş efekti */
+}
+
+.form-group input:focus {
+  border-color: #8b817e; /* Odaklandığında sınır rengi */
+  outline: none; /* Varsayılan outline'ı kaldır */
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px; /* Hata mesajları için boşluk */
+  text-align: center; /* Ortalanmış metin */
+}
+
+button {
+  width: 100%;
+  padding: 12px; /* Daha fazla iç padding */
+  border: none;
+  border-radius: 4px;
+  background-color: #6e6e6e; /* Gri arka plan rengi */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Renk ve boyut geçişleri */
+}
+
+button:hover {
+  background-color: #2d2d2d; /* Hover'da daha koyu gri */
+  transform: translateY(-2px); /* Hover'da hafif yukarı kayma */
+}
+
+p {
+  text-align: center;
+  margin-top: 20px; /* Üst boşluk */
+}
+
+a {
+  color: #fbfbfb; /* Link rengi */
+  text-decoration: none; /* Alt çizgi yok */
+}
+
+a:hover {
+  text-decoration: underline; /* Hover'da alt çizgi */
+}
