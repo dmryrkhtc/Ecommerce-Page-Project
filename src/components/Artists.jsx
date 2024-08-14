@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Artists.css";
-import mockData from "../mockData";
 
 const Artists = () => {
-  //mockdatadan sanatci ismi alip dizi olusturduk
-  const artistNames = Array.from(new Set(mockData.map((item) => item.artist)));
-  //her sanatci icin sanatci verisi olusturduk
-  const artistData = artistNames.map((artist) => {
-    //sanatcinin eserlerinini filtreledik
-    const artworks = mockData.filter((item) => item.artist === artist);
-    //ilk eserinden resim aldik
-    const artistImage = artworks.length > 0 ? artworks[0].image : null;
+  const [artists, setArtists] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    return { name: artist, artworks, image: artistImage };
-  });
+  useEffect(() => {
+    const fetchArtists = async () => {
+      try {
+        const response = await axios.get(
+          "https://66bc896924da2de7ff6af509.mockapi.io/api/v1/artists"
+        );
+        setArtists(response.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArtists();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="artists-container">
       <h1>Our Featured Artists</h1>
       <div className="artists-grid">
-        {artistData.map((artist, index) => (
-          <div className="artist-card" key={index}>
+        {artists.map((artist) => (
+          <div className="artist-card" key={artist.id}>
             {artist.image && (
               <img
                 src={artist.image}
@@ -29,18 +41,21 @@ const Artists = () => {
               />
             )}
             <h2>{artist.name}</h2>
-            <p>{artist.artworks.length} works available</p>
+            <p>
+              {(artist.artworks && artist.artworks.length) || 0} works available
+            </p>
             <div className="artworks-list">
-              {artist.artworks.map((artwork, i) => (
-                <div key={i} className="artwork-item">
-                  <img
-                    src={artwork.image}
-                    alt={artwork.title}
-                    className="artwork-thumb"
-                  />
-                  <p>{artwork.title}</p>
-                </div>
-              ))}
+              {artist.artworks &&
+                artist.artworks.map((artwork) => (
+                  <div key={artwork.id} className="artwork-item">
+                    <img
+                      src={artwork.image}
+                      alt={artwork.title}
+                      className="artwork-thumb"
+                    />
+                    <p>{artwork.title}</p>
+                  </div>
+                ))}
             </div>
           </div>
         ))}

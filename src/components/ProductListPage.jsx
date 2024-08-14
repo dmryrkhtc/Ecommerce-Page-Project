@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import mockData from "../mockData";
+//import mockData from "../mockData";
 import "./ProductListPage.css";
+import axios from "axios";
 
 const ProductListPage = () => {
-  const [filter, setFilter] = useState("all"); //eserleri filtreleme icin
-  const [searchQuery, setSearchQuery] = useState(""); //arama yapmak icin
+  const [data, setData] = useState([]); //api'dan alınan veri
+  const [filter, setFilter] = useState("all"); //eserleri filtrelemek için
+  const [searchQuery, setSearchQuery] = useState(""); //arama yapacağız
+  const [loading, setLoading] = useState(true); //verimizin yüklenme durumu
+  const [error, setError] = useState(null); //hata durumu
 
   const location = useLocation(); //url konumu
   const searchParams = new URLSearchParams(location.search); //urldeki sorgu parametreleri
@@ -14,8 +18,20 @@ const ProductListPage = () => {
   useEffect(() => {
     setSearchQuery(urlSearchQuery.toLowerCase()); //yazilanlar kucuk harf oldu
   }, [urlSearchQuery]);
+  useEffect(() => {
+    axios
+      .get("https://66bc896924da2de7ff6af509.mockapi.io/api/v1/:artworks")
+      .then((response) => {
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+  }, []);
 
-  const filteredData = mockData.filter((item) => {
+  const filteredData = data.filter((item) => {
     const matchesFilter =
       filter === "all" || //filtre all ise tum urun gosterilir
       item.subcategory.toLowerCase() === filter.toLowerCase();
@@ -29,13 +45,15 @@ const ProductListPage = () => {
     //filtreye ve aramaya uyuyorsa
     return matchesFilter && matchesSearch;
   });
+  if (loading) return <p>Loading....</p>;
+  if (error) return <p>Error:{error.message}</p>;
 
   return (
     <div className="product-list-page">
       <h1>Works</h1>
       <div className="filter-buttons">
         <button onClick={() => setFilter("all")}>All</button>
-        {Array.from(new Set(mockData.map((item) => item.subcategory))).map(
+        {Array.from(new Set(data.map((item) => item.subcategory))).map(
           (subcategory) => (
             <button key={subcategory} onClick={() => setFilter(subcategory)}>
               {subcategory}
@@ -49,7 +67,7 @@ const ProductListPage = () => {
             <div className="product-card" key={item.id}>
               <Link to={`/product/${item.id}`}>
                 <img
-                  src={item.image}
+                  src={item.imageURL} //API'den alınan resim
                   alt={item.title}
                   className="product-image"
                 />
