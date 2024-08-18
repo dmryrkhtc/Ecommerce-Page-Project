@@ -9,7 +9,7 @@ body {
 
   font-family: Arial, sans-serif;
 
-  background-image: url("./pictures/pexels-sena-senol-748456519-22937007.jpg");
+ 
   background-size: cover;
   background-position: center;
   background-attachment: relative; /* Sayfa kaydırıldığında arka planın sabit kalmasını sağlar */

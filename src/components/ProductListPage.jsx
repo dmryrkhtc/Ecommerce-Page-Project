@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
-//import mockData from "../mockData";
 import "./ProductListPage.css";
 import { fetchArtworks } from "../Api";
 import { faker } from "@faker-js/faker";
+import { CartContext } from '../cart/CartContext'; // CartContext importu
 
 const ProductListPage = () => {
-
-  const [filter, setFilter] = useState("all"); //eserleri filtrelemek için
-  const [searchQuery, setSearchQuery] = useState(""); //arama yapacağız
-  const [loading, setLoading] = useState(true); //verimizin yüklenme durumu
-  const [error, setError] = useState(null); //hata durumu
+  const [filter, setFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [artworks, setArtworks] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
   const artworksPerPage = 100;
+  const { addItem } = useContext(CartContext);
 
-  const location = useLocation(); //url konumu
-  const searchParams = new URLSearchParams(location.search); //urldeki sorgu parametreleri
-  const urlSearchQuery = searchParams.get("search") || ""; //arama sorgusu alindi
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const urlSearchQuery = searchParams.get("search") || "";
+
+
 
   useEffect(() => {
     const getArtworks = async () => {
@@ -26,14 +28,11 @@ const ProductListPage = () => {
       try {
         const newArtworks = await fetchArtworks(page, artworksPerPage);
 
-        // Rastgele açıklama ve fiyat ekleme
         const updatedArtworks = newArtworks.map((artwork) => ({
           ...artwork,
-          description: faker.lorem.sentence(), // Rastgele açıklama
-          price: faker.number.int({ min: 100, max: 5000 }) // Rastgele fiyat
+          description: faker.lorem.sentence(),
+          price: faker.number.int({ min: 100, max: 5000 })
         }));
-        console.log(updatedArtworks);
-
         setArtworks((prevArtworks) => [...prevArtworks, ...updatedArtworks]);
         setHasMore(newArtworks.length === artworksPerPage);
       } catch (error) {
@@ -74,6 +73,10 @@ const ProductListPage = () => {
     return matchesFilter && matchesSearch;
   });
 
+  const handleAddToCart = (item) => {
+    addItem(item);
+  };
+
   if (loading && artworks.length === 0) {
     return (
       <div className="loading-container">
@@ -113,21 +116,24 @@ const ProductListPage = () => {
           <div className="product-grid">
             {filteredData.length > 0 ? (
               filteredData.map((item) => (
-                <Link key={item.id} to={`/product/${item.id}`} className="product-card">
-                  <img
-                    src={
-                      item._links?.thumbnail?.href.replace(
-                        "{image_version}",
-                        "large"
-                      ) || "https://via.placeholder.com/300"
-                    }
-                    alt={item.title || "No title available"}
-                    className="product-image"
-                  />
-                  <h2>{item.title || "Untitled"}</h2>
-                  <p>{item.description || "Description not available"}</p>
-                  <p>{item.price ? `${item.price} TL` : "Price Unknown"}</p>
-                </Link>
+                <div key={item.id} className="product-card">
+                  <Link to={`/product/${item.id}`} className="product-link">
+                    <img
+                      src={
+                        item._links?.thumbnail?.href.replace(
+                          "{image_version}",
+                          "large"
+                        ) || "https://via.placeholder.com/300"
+                      }
+                      alt={item.title || "No title available"}
+                      className="product-image"
+                    />
+                    <h2>{item.title || "Untitled"}</h2>
+                    <p>{item.description || "Description not available"}</p>
+                    <p>{item.price ? `${item.price} TL` : "Price Unknown"}</p>
+                  </Link>
+                  <button onClick={() => handleAddToCart(item)} className="add-to-cart-button">Add to Cart</button>
+                </div>
               ))
             ) : (
               <p>No products found.</p>

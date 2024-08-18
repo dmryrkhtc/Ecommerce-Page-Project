@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 import { fetchArtworks } from "../Api";
 import "./Home.css";
@@ -40,7 +35,7 @@ const Home = () => {
     const interval = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * artworks.length);
       setCurrentArtwork(artworks[randomIndex]);
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [artworks]);

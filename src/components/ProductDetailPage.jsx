@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductDetailPage.css";
 import { fetchArtworkById } from "../Api";
+import { CartContext } from '../cart/CartContext'; // CartContext importu
 import { faker } from "@faker-js/faker";
 
 const ProductDetailPage = () => {
@@ -9,6 +10,7 @@ const ProductDetailPage = () => {
   const [artwork, setArtwork] = useState(null); // API'den alınan ürün bilgisi
   const [loading, setLoading] = useState(true); // Verimizin yüklenme durumu
   const [error, setError] = useState(null); // Hata durumu
+  const { addItem } = useContext(CartContext); // CartContext'ten addItem fonksiyonunu al
 
   useEffect(() => {
     const getArtwork = async () => {
@@ -34,6 +36,12 @@ const ProductDetailPage = () => {
     getArtwork();
   }, [id]);
 
+  const handleAddToCart = () => {
+    if (artwork) {
+      addItem(artwork);
+    }
+  };
+
   if (loading) return <div className="loading-container">Loading...</div>;
   if (error) return <div>{error}</div>;
   if (!artwork) return <div>No artwork found.</div>;
@@ -47,8 +55,10 @@ const ProductDetailPage = () => {
       />
       <p>{artwork.description || "No description available"}</p>
       <p>{artwork.price ? `${artwork.price} TL` : "Price Unknown"}</p>
+      <button onClick={handleAddToCart} className="add-to-cart-button">Add to Cart</button>
     </div>
   );
 };
 
 export default ProductDetailPage;
+
