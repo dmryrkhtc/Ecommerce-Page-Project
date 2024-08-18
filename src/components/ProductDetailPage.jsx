@@ -1,47 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductDetailPage.css";
-import axios from "axios";
+import { fetchArtworkById } from "../Api";
+import { faker } from "@faker-js/faker";
 
 const ProductDetailPage = () => {
   const { id } = useParams(); // Ürün ID'sini al
-  const [product, setProduct] = useState(null); // API'den alınan ürün bilgisi
+  const [artwork, setArtwork] = useState(null); // API'den alınan ürün bilgisi
   const [loading, setLoading] = useState(true); // Verimizin yüklenme durumu
   const [error, setError] = useState(null); // Hata durumu
 
   useEffect(() => {
-    axios
-      .get(`https://66bc896924da2de7ff6af509.mockapi.io/api/v1/artworks/${id}`)
-      .then((response) => {
-        setProduct(response.data);
+    const getArtwork = async () => {
+      try {
+        const data = await fetchArtworkById(id);
+
+        // Veri yoksa faker kullanarak güncelle
+        const updatedArtwork = {
+          ...data,
+          description: data.description || faker.lorem.sentence(),
+          price: data.price || faker.number.int({ min: 100, max: 5000 }), // `faker.number.int` kullanıldı
+        };
+
+        setArtwork(updatedArtwork);
+      } catch (error) {
+        setError('Error fetching artwork.');
+        console.error('Error fetching artwork:', error);
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
+      }
+    };
+
+    getArtwork();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  if (!product) return <div>Product not found</div>;
+  if (loading) return <div className="loading-container">Loading...</div>;
+  if (error) return <div>{error}</div>;
+  if (!artwork) return <div>No artwork found.</div>;
 
   return (
     <div className="product-detail-page">
-      <div className="product-info">
-        <h1>{product.title}</h1>
-        <img
-          src={product.image} // Doğru alan adı
-          alt={product.title}
-          className="product-detail-image"
-        />
-        <p className="product-category">
-          {product.category} - {product.subcategory}
-        </p>
-        <p className="product-price">Price: {product.price} TL</p>
-        <p className="product-description">{product.description}</p>
-        <button>Add to Cart</button>
-      </div>
+      <h1>{artwork.title}</h1>
+      <img
+        src={artwork._links?.thumbnail?.href.replace("{image_version}", "large") || "https://via.placeholder.com/600"}
+        alt={artwork.title || "No title available"}
+      />
+      <p>{artwork.description || "No description available"}</p>
+      <p>{artwork.price ? `${artwork.price} TL` : "Price Unknown"}</p>
     </div>
   );
 };

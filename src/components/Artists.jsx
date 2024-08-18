@@ -1,65 +1,82 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Artists.css";
+import React, { useState, useEffect } from 'react';
+import { fetchArtists } from '../Api';
+import './Artists.css';
 
 const Artists = () => {
   const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const artistsPerPage = 100;
 
   useEffect(() => {
-    const fetchArtists = async () => {
+    const getArtists = async () => {
+      setLoading(true);
       try {
-        const response = await axios.get(
-          "https://66bc896924da2de7ff6af509.mockapi.io/api/v1/artists"
-        );
-        setArtists(response.data);
+        const newArtists = await fetchArtists(page, artistsPerPage);
+        if (newArtists.length > 0) {
+          setArtists((prevArtists) => [...prevArtists, ...newArtists]);
+          setHasMore(newArtists.length === artistsPerPage);
+        } else {
+          setHasMore(false);
+        }
       } catch (error) {
-        setError(error);
+        setError('Error fetching artists.');
+        console.error('Error fetching artists:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchArtists();
-  }, []);
+    getArtists();
+  }, [page]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  const loadMore = () => {
+    if (hasMore && !loading) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  if (loading && artists.length === 0) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="artists-container">
-      <h1>Our Featured Artists</h1>
+      <h1>Artists</h1>
       <div className="artists-grid">
-        {artists.map((artist) => (
-          <div className="artist-card" key={artist.id}>
-            {artist.image && (
-              <img
-                src={artist.image}
-                alt={artist.name}
-                className="artist-image"
-              />
-            )}
-            <h2>{artist.name}</h2>
-            <p>
-              {(artist.artworks && artist.artworks.length) || 0} works available
-            </p>
-            <div className="artworks-list">
-              {artist.artworks &&
-                artist.artworks.map((artwork) => (
-                  <div key={artwork.id} className="artwork-item">
-                    <img
-                      src={artwork.image}
-                      alt={artwork.title}
-                      className="artwork-thumb"
-                    />
-                    <p>{artwork.title}</p>
-                  </div>
-                ))}
-            </div>
-          </div>
-        ))}
+        {artists.length > 0 ? (
+          artists.map((artist) => {
+            const imageHref = artist._links?.thumbnail?.href
+              ? artist._links.thumbnail.href.replace("{image_version}", "large")
+              : "https://via.placeholder.com/150";
+
+            return (
+              <div key={artist.id} className="artist-card">
+                <img
+                  src={imageHref}
+                  alt={artist.name || "No name available"}
+                  className="artist-image"
+                />
+                <div className="artist-details">
+                  <h2>{artist.name}</h2>
+                  <p>{artist.biography || "No biography available"}</p>
+                  <p>Born: {artist.birthday || "N/A"}</p>
+                  <p>Died: {artist.deathday || "N/A"}</p>
+                  <p>Location: {artist.location || "N/A"}</p>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <p>No artists found.</p>
+        )}
       </div>
+      {hasMore && (
+        <button onClick={loadMore} className="load-more-button">
+          Load More
+        </button>
+      )}
     </div>
   );
 };
