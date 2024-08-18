@@ -1,64 +1,94 @@
-.product-detail-page {
-  padding: 20px;
-  max-width: 1200px; /* Maksimum genişlik */
-  margin: 0 auto; /* Ortala */
-  background-color: #f9f9f9;
-}
-
-.product-info {
+/* General styles */
+.works-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
-  margin-top: 20px;
 }
 
-.product-info h1 {
-  font-size: 2.5rem; /* Başlık boyutu */
-  color: #333; /* Koyu gri renk */
-  margin-bottom: 10px; /* Başlık ve açıklama arasına boşluk */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-.product-detail-image {
+.work-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.work-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+h3 {
+  font-size: 1.6rem;
+  color: #333;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Loading container */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
+}
+.product-detail-page {
+  padding: 80px 20px 20px; /* Üst boşluk, navbar yüksekliği göz önüne alınarak artırıldı */
+  text-align: center; /* Başlık ve diğer metinlerin ortalanması */
+}
+
+.product-detail-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.product-detail-page img {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ddd; /* Hafif sınır rengi */
-  border-radius: 8px; /* Köşeleri yuvarla */
-  margin-bottom: 20px;
+  margin: 0 auto;
+  display: block; /* Görseli ortalamak için block olarak ayarlıyoruz */
+  margin-bottom: 20px; /* Görsel ile açıklama arasına boşluk ekleme */
 }
 
-.product-category {
-  font-size: 1.2rem; /* Kategori yazı boyutu */
-  color: #666; /* Açıklama rengi */
-  margin-bottom: 10px; /* Kategori ve fiyat arasına boşluk */
+.product-detail-page p {
+  font-size: 1.2rem;
+  color: #555;
 }
 
-.product-price {
-  font-size: 1.4rem; /* Fiyat yazı boyutu */
-  color: #333; /* Koyu gri renk */
-  margin-bottom: 10px; /* Fiyat ve açıklama arasına boşluk */
-}
-
-.product-description {
-  font-size: 1.2rem; /* Açıklama yazı boyutu */
-  color: #666; /* Açıklama rengi */
-  line-height: 1.6; /* Satır yüksekliği */
-  margin-bottom: 20px; /* Açıklama ve buton arasına boşluk */
-}
-
-button {
-  padding: 12px 24px; /* Daha geniş iç padding */
-  font-size: 16px; /* Yazı boyutu */
-  border: none;
-  border-radius: 5px; /* Köşeleri yuvarla */
-  background-color: #007bff; /* Buton rengi */
-  color: #fff; /* Buton metin rengi */
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s; /* Geçiş efektleri */
-}
-
-button:hover {
-  background-color: #0056b3; /* Hover'da arka plan rengi */
-  transform: translateY(-2px); /* Hover'da hafif yukarı kaydırma */
-}
-
-button:focus {
-  outline: none; /* Odaklanma çizgisini kaldır */
+/* Loading ve Hata Mesajı Stilleri */
+.product-detail-page .loading-container,
+.product-detail-page .error-message {
+  text-align: center;
 }
