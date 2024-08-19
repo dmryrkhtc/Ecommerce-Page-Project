@@ -6,9 +6,6 @@ import './Cart.css';
 const Cart = () => {
     const { cart, removeItem, increaseQuantity, decreaseQuantity, clearCart } = useContext(CartContext);
 
-
-
-
     const totalWithoutTaxAndShipping = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     const tax = totalWithoutTaxAndShipping * 0.18;
     const shipping = 2212;
@@ -52,19 +49,19 @@ const Cart = () => {
                 ))}
             </ul>
             <div className="cart-summary">
-
-
                 <button onClick={clearCart} className="clear-cart-button">Clear Cart</button>
                 <div className="total-price">
                     <h3>Subtotal:</h3>
-                    <p>{totalWithoutTaxAndShipping.toFixed(2)} $</p>
+                    <p>{totalWithoutTaxAndShipping.toFixed(2)} TL</p>
 
                     <h3>Tax (18%):</h3>
-                    <p>{tax.toFixed(2)} $ </p>
+                    <p>{tax.toFixed(2)} TL</p>
+
                     <h3>Shipping:</h3>
-                    <p>{shipping.toFixed(2)} $</p>
+                    <p>{shipping.toFixed(2)} TL</p>
+
                     <h3>Total:</h3>
-                    <p>{totalAmount} $</p>
+                    <p>{totalAmount} TL</p>
                 </div>
                 <Link to="/checkout" className="checkout-button">Proceed to Checkout</Link>
             </div>
@@ -73,6 +70,8 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
 
 
 

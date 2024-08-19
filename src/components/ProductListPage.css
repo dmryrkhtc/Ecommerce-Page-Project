@@ -1,10 +1,19 @@
+
 /* Genel stil ayarları */
 .product-list-page {
   padding: 20px;
+  background-image: url("../pictures/pexels-pixabay-414659.jpg");
+  background-size: cover;
+  background-attachment: fixed; /* Arka planın kaydırıldıkça sabit kalmasını sağlar */
+  background-position: center;
+  color: #333; /* Yazı rengi */
+  min-height: 100vh; /* Sayfa yüksekliği */
+  box-sizing: border-box; /* Kenarlıkları hesaba kat */
 }
 
 .filter-buttons {
   margin-bottom: 20px;
+  text-align: center; /* Butonları ortalar */
 }
 
 .filter-buttons button {
@@ -14,6 +23,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .filter-buttons .active {
@@ -30,7 +40,7 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #ffffff88; /* Hafif şeffaf beyaz arka plan */
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
@@ -53,27 +63,46 @@
   text-decoration: none;
   color: inherit;
   flex: 1;
+  padding: 10px; /* İçeriği biraz yastıkla */
+}
+
+.product-link h2,
+.product-link p {
+  margin: 0;
+  padding: 0;
+}
+
+.product-link h2 {
+  font-size: 1.25rem;
+  color: #222; /* Başlık rengi daha koyu */
+}
+
+.product-link p {
+  font-size: 1rem;
+  color: #555; /* Açıklama rengi */
+  margin-bottom: 10px; /* Alt boşluk */
 }
 
 .add-to-cart-button {
-  padding: 8px 16px;
-  background-color: #28a745;
+  padding: 10px 20px;
+  background-color: #6b6b6b;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 20px;
   margin-top: 10px;
+  align-self: center; /* Butonu ortalar */
 }
 
 .add-to-cart-button:hover {
-  background-color: #218838;
+  background-color: #3a3a3a;
+  transform: scale(1.05); /* Hover'da hafif büyütme efekti */
 }
 
-
 .load-more-button {
-  background-color: #007bff;
+  background-color: #3f3f3f;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -84,11 +113,24 @@
 }
 
 .load-more-button:hover {
-  background-color: #0056b3;
+  background-color: #646464;
 }
 
 .loading-container,
 .error-message {
   text-align: center;
   padding: 20px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 50px;
+  font-weight: bold;
+  color: #0a0a0ad5;
+
+  background-size: cover;
+  background-position: center;
 }

@@ -1,88 +1,183 @@
-.cart-page {
+.cart-page, .empty-cart {
+    background-image: url('../pictures/pexels-pixabay-259209.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    background-color: #f8f9fa;
 }
 
-.empty-cart {
-    text-align: center;
-    padding: 50px;
+.cart-page h1, .empty-cart h1 {
+    color: rgb(8, 8, 8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.browse-button, .checkout-button, .clear-cart-button, .apply-promo-button {
+.cart-page p, .empty-cart p {
+    color: rgba(112, 112, 112, 0.229);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.browse-button, .checkout-button {
+    background-color: #ea8c846b;
+    color: rgba(255, 255, 255, 0.507);
     padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
     text-decoration: none;
-    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
-.browse-button:hover, .checkout-button:hover, .clear-cart-button:hover, .apply-promo-button:hover {
-    background-color: #0056b3;
+.browse-button:hover, .checkout-button:hover {
+    background-color: #f299918c;
 }
+
 
 .cart-list {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .cart-item {
     display: flex;
+    align-items: center;
     margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    background-color: #ffffffa3;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.115);
+    overflow: hidden;
 }
 
 .cart-item-image {
     width: 150px;
-    height: auto;
+    height: 150px;
+    object-fit: cover;
     margin-right: 20px;
+    border-radius: 8px;
 }
 
 .cart-item-details {
     flex: 1;
+    padding-right: 20px;
+}
+
+.cart-item-details h2 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: #333;
+}
+
+.cart-item-details p {
+    margin: 5px 0;
+    color: #555;
 }
 
 .item-price {
-    font-size: 18px;
+    font-size: 1.2rem;
     color: #333;
+    font-weight: bold;
 }
 
 .cart-item-controls {
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 
 .quantity-button {
-    padding: 5px 10px;
-    margin: 0 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f8f9fa;
+    padding: 8px 12px;
+    border: 1px solid #00000026;
+    border-radius: 4px;
+    background-color: #f8f9fa3e;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.quantity-button:hover {
+    background-color: #dadadabe;
 }
 
 .remove-button {
-    padding: 5px 10px;
+    padding: 8px 12px;
     margin-left: 10px;
-    border: 1px solid red;
-    border-radius: 5px;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
     background-color: #f8d7da;
-    color: red;
+    color: #dc3545;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
+.remove-button:hover {
+    background-color: #f5c6cb;
+}
 
+/* Toplam ve Özet */
 .cart-summary {
-    margin-top: 20px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.514);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.137);
+}
+
+.cart-summary h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .total-price h3 {
-    margin: 5px 0;
+    margin: 10px 0;
+    font-size: 1.4rem;
+    color: #333;
 }
 
 .total-price p {
-    margin: 0;
+    margin: 5px 0;
+    font-size: 1.2rem;
+    color: #666;
 }
+
+/* Buton Stilleri */
+.checkout-button, .clear-cart-button {
+    padding: 12px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.checkout-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.checkout-button:hover {
+    background-color: #218838;
+}
+
+.clear-cart-button {
+    background-color: #dc3545;
+    font-size: 14px;
+}
+
+.clear-cart-button:hover {
+    background-color: #c82333;
+}
+

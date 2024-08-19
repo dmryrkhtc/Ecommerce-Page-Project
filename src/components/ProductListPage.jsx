@@ -20,8 +20,6 @@ const ProductListPage = () => {
   const searchParams = new URLSearchParams(location.search);
   const urlSearchQuery = searchParams.get("search") || "";
 
-
-
   useEffect(() => {
     const getArtworks = async () => {
       setLoading(true);
@@ -91,12 +89,7 @@ const ProductListPage = () => {
     <div className="product-list-page">
       <h1>Works</h1>
       <div className="filter-buttons">
-        <button
-          className={filter === "all" ? "active" : ""}
-          onClick={() => setFilter("all")}
-        >
-          All
-        </button>
+        {/* Remove the 'All' button */}
         {Array.from(
           new Set(artworks.map((item) => item.subcategory).filter(Boolean))
         ).map((subcategory) => (
@@ -151,3 +144,4 @@ const ProductListPage = () => {
 };
 
 export default ProductListPage;
+

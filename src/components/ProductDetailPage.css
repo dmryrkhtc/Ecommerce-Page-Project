@@ -1,75 +1,26 @@
-/* General styles */
-.works-container {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.work-card {
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.work-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.work-image {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-h3 {
-  font-size: 1.6rem;
-  color: #333;
-  margin: 15px 0;
-  font-weight: bold;
-}
-
-p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-/* Loading container */
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Error message */
-.error-message {
-  color: red;
-  font-size: 18px;
-  text-align: center;
-  margin: 20px 0;
-}
+/* Genel Stil */
 .product-detail-page {
   padding: 80px 20px 20px; /* Üst boşluk, navbar yüksekliği göz önüne alınarak artırıldı */
-  text-align: center; /* Başlık ve diğer metinlerin ortalanması */
+  background-image: url("../pictures/pexels-pixabay-414659.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.product-detail-section {
+  background-color: rgba(153, 153, 153, 0.363); /* Yarı saydam beyaz arka plan */
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.574);
 }
 
 .product-detail-page h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 20px;
   color: #333;
 }
@@ -78,31 +29,35 @@ p {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
-  display: block; /* Görseli ortalamak için block olarak ayarlıyoruz */
-  margin-bottom: 20px; /* Görsel ile açıklama arasına boşluk ekleme */
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .product-detail-page p {
   font-size: 1.2rem;
-  color: #555;
+  color: #121212;
+  margin-bottom: 20px;
 }
+
 .add-to-cart-button {
-  padding: 10px 20px;
-  background-color: #333;
+  padding: 12px 24px;
+  background-color: #282727;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.3s;
   margin-top: 20px;
 }
 
 .add-to-cart-button:hover {
-  background-color: #555;
+  background-color: #171717;
+  transform: scale(1.05);
 }
 
-
-/* Loading ve Hata Mesajı Stilleri */
-.product-detail-page .loading-container,
-.product-detail-page .error-message {
+.loading-container,
+.error-message {
   text-align: center;
 }

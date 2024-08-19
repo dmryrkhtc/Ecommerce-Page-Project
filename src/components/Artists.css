@@ -1,10 +1,12 @@
-
-
 .artists-container {
   font-family: Arial, sans-serif;
-  padding: 40px 20px; /* Daha fazla padding */
-  background-color: hidden; /* Arka plan rengi */
+  padding: 60px 20px; /* Yukarıdan daha fazla padding */
+  background-image: url("../pictures/pexels-enric-cruz-lopez-6039246.jpg");
+  background-size: cover;
+  background-attachment: fixed; /* Arka planın kaydırıldıkça sabit kalmasını sağlar */
   color: #333; /* Yazı rengi */
+  min-height: 100vh; /* Sayfa yüksekliği */
+  box-sizing: border-box; /* Kenarlıkları hesaba kat */
 }
 
 .artists-container h1 {
@@ -19,16 +21,22 @@
   flex-wrap: wrap;
   gap: 20px; /* Kartlar arasındaki boşluk */
   justify-content: center; /* Ortalanmış kartlar */
+  margin-top: 20px; /* Navbar ile çakışmayı önlemek için üstten boşluk */
 }
 
 .artist-card {
-  background-color: #fff; /* Kart arka plan rengi */
+  background-color: #ffffff88; /* Kart arka plan rengi */
   border-radius: 8px; /* Köşe yuvarlama */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
   padding: 20px; /* İç padding */
   text-align: center; /* İçerik ortalanmış */
   max-width: 300px; /* Maksimum genişlik */
   border: 1px solid #ddd; /* Sınır rengi */
+  transition: transform 0.2s; /* Hover'da hafif büyütme efekti */
+}
+
+.artist-card:hover {
+  transform: scale(1.05); /* Hover'da hafif büyütme */
 }
 
 .artist-image {
@@ -40,30 +48,6 @@
   border: 2px solid #ddd; /* Görselin etrafında sınır */
 }
 
-.artworks-list {
-  margin-top: 20px; /* Üst boşluk */
-  text-align: center; /* İçerik ortalanmış */
-}
-
-.artwork-item {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* İçerik ortalanmış */
-  margin-bottom: 10px; /* Kartlar arası boşluk */
-}
-
-.artwork-thumb {
-  width: 60px; /* Sabit genişlik */
-  height: 60px; /* Sabit yükseklik */
-  margin-right: 10px; /* Sağ boşluk */
-  border-radius: 4px; /* Köşe yuvarlama */
-}
-
-.artwork-item p {
-  margin: 0; /* Alt ve üst boşlukları kaldır */
-  color: #555; /* Metin rengi */
-}
-/* Tüm ekranı kaplayan kapsayıcı */
 .loading-error-container {
   position: fixed;
   top: 0;
@@ -73,15 +57,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9); /* Arka planı beyaz ve biraz opak yapar */
-  z-index: 1000; /* Diğer içeriklerin üstünde görünmesini sağlar */
+  background-color: rgba(255, 255, 255, 0.71); /* Arka planı beyaz ve biraz opak yapar */
+  z-index: 1100; /* Diğer içeriklerin üstünde görünmesini sağlar */
 }
 
-/* Mesajın stilini ayarlamak */
 .loading-error-container p {
-  font-size: 300px; /* Yazı boyutunu ayarlayın */
+  font-size: 50px; /* Yazı boyutunu ayarlayın */
   font-weight: bold; /* Yazıyı kalın yapar */
   color: #333; /* Yazının rengini koyu gri yapar */
   margin: 0; /* Margin'i sıfırlar */
   text-align: center; /* Yazıyı ortalar */
 }
+

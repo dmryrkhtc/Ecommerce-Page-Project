@@ -1,9 +1,9 @@
 .footer {
   background-color: #404040;
-  color: white;
+  
   text-align: center;
   padding: 20px 0;
-  position: fixed;
+  position:fixed ;
   bottom: 0;
   width: 100%;
   z-index: 1000;
@@ -26,12 +26,12 @@
   margin: 0 10px;
   font-size: 20px;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .social-media a:hover {
   color: #ffffff; /* İkonun üzerine gelindiğinde renk değişir */
-  box-shadow: 0 0 10px 2px rgba(23, 23, 23, 0.674);
+  box-shadow: 0 0 8px 2px rgba(23, 23, 23, 0.744);
   transform: scale(1.03);
 }
 
@@ -48,7 +48,15 @@
 }
 
 .footer-bottom {
-  font-size: 20px;
-  margin-top: 10px;
-  color: #d7d7d7;
+  font-size: 60px; /* Font boyutunu yeterli seviyede ayarlama */
+  margin-top: 10px; /* Üst boşluğu arttırma */
+  color: #d7d7d7; /* Yazının rengi, arka plandan farklı olmalı */
+  text-align: center; /* Yazıyı ortalama */
+}
+
+
+/* Sayfanın içeriği footer'ı gizlemesin diye alt boşluk ekle */
+body {
+  margin: 0;
+  padding-bottom: 80px; /* Footer yüksekliğine göre ayarlayın */
 }

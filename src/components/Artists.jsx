@@ -38,8 +38,15 @@ const Artists = () => {
     }
   };
 
-  if (loading && artists.length === 0) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading && artists.length === 0) {
+    return (
+      <div className="loading-error-container">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) return <div className="loading-error-container">{error}</div>;
 
   return (
     <div className="artists-container">
@@ -82,3 +89,4 @@ const Artists = () => {
 };
 
 export default Artists;
+

@@ -1,17 +1,24 @@
-body{
+/* Contact sayfasının arka planını kaplamak için */
+.contact-page {
   background-image: url("../pictures/pexels-sena-senol-748456519-22937007.jpg");
+  background-size: cover; /* Görseli tamamen kaplaması için */
+  background-position: center; /* Görselin ortalanmasını sağlar */
+  background-repeat: no-repeat; /* Görselin tekrar etmemesini sağlar */
+  background-attachment: fixed; /* Sayfa kaydırıldığında görselin sabit kalmasını sağlar */
+  min-height: 100vh; /* Sayfanın en az tüm ekranı kaplamasını sağlar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .contact-container {
   font-family: Arial, sans-serif;
   padding: 40px 20px; /* Daha fazla padding */
   max-width: 800px;
   margin: 0 auto;
-  background-color: hidden; /* Arka plan rengi */
+  background-color: hidden; /* Beyaz arka plan rengi, biraz şeffaf */
   border-radius: 8px; /* Köşeleri yuvarlat */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
- 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.553); /* Hafif gölge efekti */
 }
 
 h1 {

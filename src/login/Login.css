@@ -1,21 +1,36 @@
+/* Login sayfası arka plan görseli */
+.login-page-container {
+  background-image: url("../pictures/pexels-eye4dtail-792032.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh; /* Tüm yüksekliği kapsar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login container */
 .login-page {
   width: 100%;
   max-width: 400px; /* Maksimum genişlik */
-  margin: 40px auto; /* Üst ve alt boşluk ekleme */
-  padding: 40px 20px; /* Daha fazla iç padding */
+  padding: 40px 20px; /* İç padding */
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
-  background-color: hidden; /* Beyaz arka plan rengi */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.625); /* Hafif gölge efekti */
+  background-color: hidden
+  ; /* Hafif şeffaf arka plan */
 }
 
+/* Başlık stilleri */
 .login-page h1 {
   text-align: center;
   margin-bottom: 30px; /* Başlık ve form arasındaki boşluk */
   font-size: 2em; /* Başlık boyutu */
-  color: #333; /* Başlık rengi */
+  color: #656565; /* Başlık rengi */
 }
 
+/* Form elemanları stilleri */
 .form-group {
   margin-bottom: 20px; /* Daha fazla boşluk */
 }
@@ -24,12 +39,12 @@
   display: block;
   margin-bottom: 8px; /* Etiket ve input arasındaki boşluk */
   font-weight: bold; /* Koyu etiket rengi */
-  color: #555; /* Etiket rengi */
+  color: #787878; /* Etiket rengi */
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px; /* Daha fazla iç padding */
+  padding: 12px; /* İç padding */
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px; /* Yazı boyutu */
@@ -42,17 +57,17 @@
 }
 
 .error-message {
-  color: red;
+  color: rgb(130, 10, 10);
   margin-bottom: 20px; /* Hata mesajları için boşluk */
   text-align: center; /* Ortalanmış metin */
 }
 
 button {
   width: 100%;
-  padding: 12px; /* Daha fazla iç padding */
+  padding: 12px; /* İç padding */
   border: none;
   border-radius: 4px;
-  background-color: #6e6e6e; /* Gri arka plan rengi */
+  background-color: #9a9898; /* Gri arka plan rengi */
   color: #fff;
   font-size: 16px;
   cursor: pointer;
@@ -60,7 +75,7 @@ button {
 }
 
 button:hover {
-  background-color: #2d2d2d; /* Hover'da daha koyu gri */
+  background-color: #4b4a4a; /* Hover'da daha koyu gri */
   transform: translateY(-2px); /* Hover'da hafif yukarı kayma */
 }
 
@@ -77,3 +92,4 @@ a {
 a:hover {
   text-decoration: underline; /* Hover'da alt çizgi */
 }
+
