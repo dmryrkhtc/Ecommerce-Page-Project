@@ -4,8 +4,7 @@ import "./About.css";
 const About = () => {
   return (
     <div className="about-container">
-      <header className="about-header"></header>
-      <section className="about-content">
+      <div className="about-content">
         <h2>Our Mission</h2>
         <p>
           Our mission is to showcase and celebrate the most innovative and
@@ -23,9 +22,10 @@ const About = () => {
           artists have the platform to share their creative visions with the
           world.
         </p>
-      </section>
+      </div>
     </div>
   );
 };
 
 export default About;
+

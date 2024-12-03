@@ -1,49 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductDetailPage.css";
-import axios from "axios";
+import { fetchArtworkById } from "../Api";
+import { CartContext } from '../cart/CartContext';
+import { faker } from "@faker-js/faker";
 
 const ProductDetailPage = () => {
-  const { id } = useParams(); // Ürün ID'sini al
-  const [product, setProduct] = useState(null); // API'den alınan ürün bilgisi
-  const [loading, setLoading] = useState(true); // Verimizin yüklenme durumu
-  const [error, setError] = useState(null); // Hata durumu
+  const { id } = useParams();
+  const [artwork, setArtwork] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { addItem } = useContext(CartContext);
 
   useEffect(() => {
-    axios
-      .get(`https://66bc896924da2de7ff6af509.mockapi.io/api/v1/artworks/${id}`)
-      .then((response) => {
-        setProduct(response.data);
+    const getArtwork = async () => {
+      try {
+        const data = await fetchArtworkById(id);
+
+        const updatedArtwork = {
+          ...data,
+          description: data.description || faker.lorem.sentence(),
+          price: data.price || faker.number.int({ min: 100, max: 5000 }),
+        };
+
+        setArtwork(updatedArtwork);
+      } catch (error) {
+        setError('Error fetching artwork.');
+        console.error('Error fetching artwork:', error);
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
+      }
+    };
+
+    getArtwork();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  if (!product) return <div>Product not found</div>;
+  const handleAddToCart = () => {
+    if (artwork) {
+      addItem(artwork);
+    }
+  };
+
+  if (loading) return <div className="loading-container">Loading...</div>;
+  if (error) return <div className="error-message">{error}</div>;
+  if (!artwork) return <div className="error-message">No artwork found.</div>;
 
   return (
     <div className="product-detail-page">
-      <div className="product-info">
-        <h1>{product.title}</h1>
+      <div className="product-detail-section">
+        <h1>{artwork.title}</h1>
         <img
-          src={product.image} // Doğru alan adı
-          alt={product.title}
-          className="product-detail-image"
+          src={artwork._links?.thumbnail?.href.replace("{image_version}", "large") || "https://via.placeholder.com/600"}
+          alt={artwork.title || "No title available"}
         />
-        <p className="product-category">
-          {product.category} - {product.subcategory}
-        </p>
-        <p className="product-price">Price: {product.price} TL</p>
-        <p className="product-description">{product.description}</p>
-        <button>Add to Cart</button>
+        <p>{artwork.description || "No description available"}</p>
+        <p>{artwork.price ? `${artwork.price} TL` : "Price Unknown"}</p>
+        <button onClick={handleAddToCart} className="add-to-cart-button">Add to Cart</button>
       </div>
     </div>
   );
 };
 
 export default ProductDetailPage;
+

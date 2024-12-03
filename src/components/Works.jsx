@@ -1,48 +1,86 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Works.css";
-import axios from "axios";
+import { fetchArtworks } from "../Api";
 
 const Works = () => {
-  const [data, setData] = useState([]); // API'den alınan veri
+  const [artworks, setArtworks] = useState([]);
   const [loading, setLoading] = useState(true); // Verimizin yüklenme durumu
   const [error, setError] = useState(null); // Hata durumu
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const artworksPerPage = 100;
 
   useEffect(() => {
-    axios
-      .get("https://66bc896924da2de7ff6af509.mockapi.io/api/v1/artworks") // Doğru API endpoint'i
-      .then((response) => {
-        setData(response.data);
+    const getArtworks = async () => {
+      setLoading(true);
+      try {
+        const newArtworks = await fetchArtworks(currentPage, artworksPerPage);
+        if (newArtworks.length > 0) {
+          setArtworks((prevArtworks) => [...prevArtworks, ...newArtworks]);
+          setHasMore(newArtworks.length === artworksPerPage);
+        } else {
+          setHasMore(false);
+        }
+      } catch (error) {
+        setError('Error fetching artworks.');
+        console.error('Error fetching artworks:', error);
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
+      }
+    };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+    getArtworks();
+  }, [currentPage]);
+
+  const loadMore = () => {
+    if (hasMore && !loading) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  if (loading && artworks.length === 0) {
+    return (
+      <div className="loading-container">
+        Loading...
+      </div>
+    );
+  }
+
+  if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="works-container">
       <div className="works-grid">
-        {data.map((item) => (
-          <div key={item.id} className="work-card">
-            <Link to={`/product/${item.id}`}>
+        {artworks.length > 0 ? (
+          artworks.map((item) => (
+            <Link key={item.id} to={`/product/${item.id}`} className="work-card">
               <img
-                src={item.image} // Doğru alan adı
-                alt={item.title}
+                src={
+                  item._links?.thumbnail?.href.replace(
+                    "{image_version}",
+                    "large"
+                  ) || "https://via.placeholder.com/300"
+                }
+                alt={item.title || "No title available"}
                 className="work-image"
               />
-              <h3>{item.title}</h3>
-              <p>{item.price} TL</p>
+              <h3>{item.title || "Untitled"}</h3>
+              <p>{item.price ? `${item.price} TL` : "Price Unknown"}</p>
             </Link>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No artworks found.</p>
+        )}
       </div>
+      {hasMore && (
+        <button onClick={loadMore} className="load-more-button">
+          Load More
+        </button>
+      )}
     </div>
   );
 };
 
 export default Works;
+
